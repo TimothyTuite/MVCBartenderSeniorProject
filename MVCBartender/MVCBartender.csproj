@@ -201,9 +201,19 @@
     <Compile Include="Controllers\barProductsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ordersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708242053014_InitialCreate.cs" />
+    <Compile Include="Migrations\201708242053014_InitialCreate.Designer.cs">
+      <DependentUpon>201708242053014_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708242058507_first-migration.cs" />
+    <Compile Include="Migrations\201708242058507_first-migration.Designer.cs">
+      <DependentUpon>201708242058507_first-migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\barProduct.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -225,9 +235,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -279,8 +286,21 @@
     <Content Include="Views\barProducts\Details.cshtml" />
     <Content Include="Views\barProducts\Edit.cshtml" />
     <Content Include="Views\barProducts\Index.cshtml" />
+    <Content Include="Views\orders\Create.cshtml" />
+    <Content Include="Views\orders\Delete.cshtml" />
+    <Content Include="Views\orders\Details.cshtml" />
+    <Content Include="Views\orders\Edit.cshtml" />
+    <Content Include="Views\orders\Index.cshtml" />
+    <Content Include="Views\Shared\ItemPartial.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201708242053014_InitialCreate.resx">
+      <DependentUpon>201708242053014_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708242058507_first-migration.resx">
+      <DependentUpon>201708242058507_first-migration.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

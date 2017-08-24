@@ -1,0 +1,34 @@
+﻿@model MVCBartender.Models.order
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.orderdBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.orderdBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.costOfOrder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.costOfOrder)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
