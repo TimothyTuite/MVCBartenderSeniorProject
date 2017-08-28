@@ -10,7 +10,7 @@ namespace MVCBartender.Models
     public class barProduct
     {
         [Key]
-        public string id { get; set; }
+        public int id { get; set; }
         [Required]
         [Display( Name = "Type")]
         public string type { get; set; }
@@ -22,7 +22,7 @@ namespace MVCBartender.Models
         public float price { get; set; }
     }
 
-    public class barItemContext : DbContext
+    public class barProductContext : DbContext
     {
         public DbSet<barProduct> barProduct { get; set; }
     }

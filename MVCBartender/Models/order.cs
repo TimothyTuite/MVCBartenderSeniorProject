@@ -10,7 +10,7 @@ namespace MVCBartender.Models
     public class order
     {
         [Key]
-        public string Id { get; set; }
+        public int id { get; set; }
         [Required]
         [Display(Name = "Order For")]
         public string orderdBy { get; set; }

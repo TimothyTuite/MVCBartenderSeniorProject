@@ -13,10 +13,15 @@ namespace MVCBartender.Controllers
     public class ordersController : Controller
     {
         private orderContext db = new orderContext();
-        private barItemContext ItemDB = new barItemContext();
+        private barProductContext barProduct_db = new barProductContext(); 
 
+        //GET: partial view of barProducts
+        public PartialViewResult getBarProductsList()
+        {
+            var products = barProduct_db.barProduct.ToList(); 
+            return PartialView(@"~/Views/_barProducts.cshtml", products); 
+        }
 
-      
         // GET: orders
         public ActionResult Index()
         {
@@ -24,7 +29,7 @@ namespace MVCBartender.Controllers
         }
 
         // GET: orders/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -37,17 +42,10 @@ namespace MVCBartender.Controllers
             }
             return View(order);
         }
-        [HttpGet]
-        public ActionResult getBarItems()
-        {
-            var items = ItemDB.barProduct.ToList();
-            return PartialView(@"~/Views/Shared/ItemPartial.cshtml", items);
-            
-        }
+
         // GET: orders/Create
         public ActionResult Create()
         {
-            
             return View();
         }
 
@@ -56,7 +54,7 @@ namespace MVCBartender.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,orderdBy,costOfOrder")] order order)
+        public ActionResult Create([Bind(Include = "id,orderdBy,costOfOrder")] order order)
         {
             if (ModelState.IsValid)
             {
@@ -69,7 +67,7 @@ namespace MVCBartender.Controllers
         }
 
         // GET: orders/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -88,7 +86,7 @@ namespace MVCBartender.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,orderdBy,costOfOrder")] order order)
+        public ActionResult Edit([Bind(Include = "id,orderdBy,costOfOrder")] order order)
         {
             if (ModelState.IsValid)
             {
@@ -100,7 +98,7 @@ namespace MVCBartender.Controllers
         }
 
         // GET: orders/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -117,7 +115,7 @@ namespace MVCBartender.Controllers
         // POST: orders/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             order order = db.orders.Find(id);
             db.orders.Remove(order);

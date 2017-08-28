@@ -292,6 +292,7 @@
     <Content Include="Views\orders\Edit.cshtml" />
     <Content Include="Views\orders\Index.cshtml" />
     <Content Include="Views\Shared\ItemPartial.cshtml" />
+    <Content Include="Views\_barProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201708242053014_InitialCreate.resx">

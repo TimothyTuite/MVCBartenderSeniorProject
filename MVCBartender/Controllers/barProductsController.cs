@@ -12,7 +12,7 @@ namespace MVCBartender.Controllers
 {
     public class barProductsController : Controller
     {
-        private barItemContext db = new barItemContext();
+        private barProductContext db = new barProductContext();
 
         // GET: barProducts
         public ActionResult Index()
@@ -21,7 +21,7 @@ namespace MVCBartender.Controllers
         }
 
         // GET: barProducts/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -59,7 +59,7 @@ namespace MVCBartender.Controllers
         }
 
         // GET: barProducts/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -90,7 +90,7 @@ namespace MVCBartender.Controllers
         }
 
         // GET: barProducts/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -107,7 +107,7 @@ namespace MVCBartender.Controllers
         // POST: barProducts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             barProduct barProduct = db.barProduct.Find(id);
             db.barProduct.Remove(barProduct);
