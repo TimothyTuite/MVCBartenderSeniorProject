@@ -46,7 +46,9 @@ namespace MVCBartender.Controllers
         // GET: orders/Create
         public ActionResult Create()
         {
-            return View();
+            var newOrder = new order(); 
+            newOrder.products = barProduct_db.barProduct.ToList();
+            return View(newOrder);
         }
 
         // POST: orders/Create

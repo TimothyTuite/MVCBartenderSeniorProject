@@ -11,6 +11,7 @@ namespace MVCBartender.Models
     {
         [Key]
         public int id { get; set; }
+        public IEnumerable<barProduct> products { get; set; } 
         [Required]
         [Display(Name = "Order For")]
         public string orderdBy { get; set; }
