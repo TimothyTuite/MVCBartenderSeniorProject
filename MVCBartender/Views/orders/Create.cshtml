@@ -80,10 +80,14 @@
                     var createClickHandler =
                         function (row) {
                             return function () {
-                                var cell = row.getElementsByTagName("td")[0];
-                                var id = cell.innerHTML;
-                                orderItemIds.push(id);
-                                alert("pushed id: " + id + "length: " + orderItemIds.length);
+                                var firstCell = row.getElementsByTagName("td")[0];
+                                var thirdCell = row.getElementsByTagName("td")[2];
+                                var fourthCell = row.getElementsByTagName("td")[3];
+                                var id = firstCell.innerHTML;
+                                var name = thirdCell.innerHTML;
+                                var price = fourthCell.innerHTML;
+                                orderItemIds.push({ "id": id, "name" : name, "price": price });
+                                alert("pushed id: " + id +"name: "+ name +" length: " + orderItemIds.length);
                                 displayOrder(); 
                             };
                         };
@@ -94,11 +98,28 @@
             }
             function displayOrder() {
                 var list = document.getElementById("itemsOrdered");
+                var costInput = document.getElementById("costOfOrder");
                 list.innerHTML = '';
+                var totalCost = sumOfOrder(); 
                 for (i = 0; i < orderItemIds.length; i++) {
-                    list.append('<li> </li>').innerHTML(orderItemIds[i]);
+                    var id = orderItemIds[i].id;
+                    var name = orderItemIds[i].name;
+                    var price = orderItemIds[i].price;
+                    var entry = document.createElement('li');
+                    entry.appendChild(document.createTextNode(name + " $" + price));
+                    list.appendChild(entry);
                     console.log('<li>' + orderItemIds[i] + '<li/>')
                 }
+                costInput.value = totalCost; 
+            }
+            function sumOfOrder() {
+                console.log("getting sum ...")
+                var sum = 0 
+                for (i = 0; i < orderItemIds.length; i++) {
+                    sum += Number(orderItemIds[i].price); 
+                }
+                console.log(sum)
+                return sum 
             }
             window.onload = addRowHandlers();
         </script>
